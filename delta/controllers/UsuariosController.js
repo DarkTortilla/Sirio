@@ -1,14 +1,27 @@
 // controllers/UsuarioController.js
 const Usuario = require('../models/Usuario');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 exports.createUsuario = async (req, res) => {
   try {
-    const usuario = await Usuario.create(req.body);
-    res.status(201).json(usuario);
+    // Cifrar la contraseña antes de crear el usuario
+    const hashedPassword = await bcrypt.hash(req.body.pass, saltRounds);
+
+    // Crear el usuario con la contraseña cifrada
+    const usuario = await Usuario.create({
+      ...req.body,
+      pass: hashedPassword
+    });
+
+    res.status(201).json({ message: 'Usuario creado exitosamente', usuario });
   } catch (error) {
+    console.error('Error al crear el usuario:', error);
     res.status(500).json({ error: 'Error al crear el usuario' });
   }
 };
+
 
 exports.getAllUsuarios = async (req, res) => {
   try {
