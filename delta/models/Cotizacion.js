@@ -12,14 +12,14 @@ const Cotizacion = sequelize.define("Cotizacion", {
     idUsuario: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Usuarios',
+            model: 'Usuario',
             key: 'idUsuario'
         },
     },
     idBanco: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Bancos',
+            model: 'Banco',
             key: 'id'
         }
     },

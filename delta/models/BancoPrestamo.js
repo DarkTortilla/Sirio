@@ -6,14 +6,14 @@ const BancoPrestamo = sequelize.define('BancoPrestamo', {
   idBanco: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Bancos',
+      model: 'Banco',
       key: 'id'
     }
   },
   idPrestamo: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Prestamos',
+      model: 'Prestamo',
       key: 'idPrestamo'
     }
   }
