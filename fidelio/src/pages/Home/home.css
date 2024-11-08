@@ -1,0 +1,33 @@
+.home-header {
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 2px 0 #0004;
+  border-radius: 5px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-actions {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & h2 {
+    text-align: center;
+    color: #333;
+  }
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+
+  & button {
+    width: 300px;
+  }
+}
