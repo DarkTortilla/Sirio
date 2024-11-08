@@ -1,0 +1,32 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.btn {
+  border: none;
+  box-shadow: 0 2px 2px 0 #0004;
+  background: none;
+  font-size: 1rem;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.main-btn {
+  background: linear-gradient(40deg, #f82, #f51);
+  color: #fff;
+
+  &:hover {
+    background: linear-gradient(40deg, #e72, #e31);
+  }
+}
+
+.info-btn {
+  background: linear-gradient(40deg, #222, #555);
+  color: #fff;
+
+  &:hover {
+    background: linear-gradient(40deg, #111, #333);
+  }
+}
