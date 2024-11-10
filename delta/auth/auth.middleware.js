@@ -2,18 +2,22 @@ const jwt = require('jsonwebtoken')
 
 const authMiddleware=(req,res,next)=>{
     const token= req.headers['auth'];
+    console.log(token)
 
     if(!token){
-        res.status(403).json("Token requerido");
+        
+        return res.status(403).json("Token requerido");
+        
     }
 
     try {
-        cosnt =jwt.verify(token.split(' ')[1], process.env.JWT_KEY)
+        const decoded=jwt.verify(token, process.env.JWT_KEY)
         req.user=decoded;
+        console.log(decoded);
         next();
     } catch (error) {
-        console.log('error');
-        res.status(401).json('Token invalido o expirado')
+        console.log(error);
+        return res.status(401).json('Token invalido o expirado')
     }
 }
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Importa los archivos de rutas
+const adminRouer= require('../routes/Admin.routes')
 const usuariosRoutes = require('./Usuarios.routes');
 const cotizacionesRoutes = require('./Cotizacion.routes');
 const prestamosRoutes = require('./Prestamo.routes');
@@ -10,6 +11,7 @@ const authRoutes = require('./Auth.routes')
 
 
 // Define las rutas principales para la API
+router.use('/admin', adminRouer);
 router.use('/usuarios', usuariosRoutes);
 router.use('/cotizaciones', cotizacionesRoutes);
 router.use('/prestamos', prestamosRoutes);

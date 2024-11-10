@@ -14,9 +14,9 @@ app.use('/api', routes);
 
 
 // Sincronizar los modelos con la base de datos
-sequelize.sync({ force: false }) // Usar { force: true } para recrear las tablas cada vez
+sequelize.sync({ force: false }) 
   .then(() => {
-    console.log("Base de datos sincronizada.");
+    console.log("El gordito");
   })
   .catch(err => {
     console.error("Error al sincronizar la base de datos:", err);

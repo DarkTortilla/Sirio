@@ -2,6 +2,7 @@ const roleMiddleware = (requiredRole)=>{
     return (req, res, next)=>{
         const user= req.user;
         if (user && user.role === requiredRole) {
+        
             next();    
         }
         else{
@@ -9,3 +10,5 @@ const roleMiddleware = (requiredRole)=>{
         }
     }
 } 
+
+module.exports = roleMiddleware;

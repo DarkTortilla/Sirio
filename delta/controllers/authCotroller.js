@@ -45,7 +45,7 @@ const loginAdmin = async (req, res) => {
             return res.status(400).json({ msg: 'Contraseña incorrecta' });
         }
 
-        const token = jwt.sign({ id: admin.idAdmin, role: 'admin' }, secretKey, { expiresIn: '1h' });
+        const token = jwt.sign({ id: admin.idAdmin, role: 'admin' }, secretKey, { expiresIn: '12h' });
 
         res.json({ msg: 'Inicio de sesión exitoso', token });
     } catch (err) {
