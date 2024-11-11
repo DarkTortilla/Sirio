@@ -1,17 +1,54 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login"
+import Admin from "./pages/admin/Admin";
+
+import {BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom';
+import getCookie from "../services/cookiesService";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [hasCookie, setHasCookie] = useState(false);
+
+  useEffect(()=> {
+    const interval = setInterval(()=> {
+      const cookie = getCookie("auth");
+      if(cookie != null){
+        setHasCookie(true);
+        // navigate("/")
+      } else {
+        setHasCookie(false);
+        // navigate("/")
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [hasCookie])
+  
+
 
   return (
     <>
-      <Navbar />
-      <Home />
+    
+    {hasCookie ? 
+      (
+        <>
+          <Router>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home></Home>}/>
+            <Route path="/admin/*" element={<Admin></Admin>}/>
+            <Route path="/nueva-co"></Route>
+          </Routes>
+          </Router>
+        </>
+      ) : (
+          <Login/>
+      )
+      }
+    
+      
     </>
   );
 }

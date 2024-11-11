@@ -13,7 +13,7 @@ exports.createPrestamo = async (req, res) => {
 exports.getAllPrestamos = async (req, res) => {
   try {
     const prestamos = await Prestamo.findAll();
-    res.json(prestamos);
+    res.status(200).json(prestamos);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los préstamos' });
   }
@@ -49,15 +49,4 @@ exports.deletePrestamo = async (req, res) => {
   }
 };
 
-exports.getPrestamobyBanco = async (req, res) => {
-  const { bancoId } = req.params;
-  try {
-    const prestamos = await Prestamo.findAll({ where: { idBanco: bancoId } });
-    if (prestamos.length === 0) {
-      return res.status(404).json({ error: 'No se encontraron préstamos para el banco especificado' });
-    }
-    res.status(200).json(prestamos);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los préstamos del banco' });
-  }
-}
+

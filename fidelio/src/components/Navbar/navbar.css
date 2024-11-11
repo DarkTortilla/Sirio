@@ -8,13 +8,26 @@
 
   & ul {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
 
     & li {
       list-style: none;
       display: grid;
       place-content: center;
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline;
+      }
+
+      & a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

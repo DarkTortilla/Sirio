@@ -11,15 +11,24 @@ exports.createCotizacion = async (req, res) => {
 };
 
 exports.getCotizacionesByUsusario = async (req, res) => {
-  const { idUsuario } = req.params;
+
+
+  console.log(req.user);
+  let idUsuario
+  if (req.user.role == "admin") {
+    console.log(req.query);
+    idUsuario = req.params.idUsuario;
+  }
+  else {
+    idUsuario = req.user.id;
+  }
+
   try {
     const cotizaciones = await Cotizacion.findAll({
-      where:{ idUsuario }
+      where: { idUsuario }
     });
 
-    if(cotizaciones.length===0){
-      return res.status(404).json({ error: 'No se encontraron cotizaciones para el usuario especificado' });
-    }
+  
     res.status(200).json(cotizaciones)
 
   } catch (error) {
@@ -30,11 +39,11 @@ exports.getCotizacionesByUsusario = async (req, res) => {
 }
 
 
-exports.getAllCotizaciones = async (req,res)=>{
+exports.getAllCotizaciones = async (req, res) => {
   try {
     const cotizaciones = await Cotizacion.findAll();
-    
-    if(cotizaciones.length===0){
+
+    if (cotizaciones.length === 0) {
       return res.status(404).json({ error: 'No se encontraron cotizaciones para el usuario especificado' });
     }
 

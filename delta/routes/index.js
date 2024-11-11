@@ -8,6 +8,7 @@ const cotizacionesRoutes = require('./Cotizacion.routes');
 const prestamosRoutes = require('./Prestamo.routes');
 const bancoRoutes = require('./Banco.routes');
 const authRoutes = require('./Auth.routes')
+const bancoprestamoRoutes = require('./BancoPrestamo.routes')
 
 
 // Define las rutas principales para la API
@@ -17,6 +18,7 @@ router.use('/cotizaciones', cotizacionesRoutes);
 router.use('/prestamos', prestamosRoutes);
 router.use('/bancos', bancoRoutes);
 router.use('/login', authRoutes);
+router.use('/bancoprestamo',bancoprestamoRoutes);
 
 
 module.exports = router;

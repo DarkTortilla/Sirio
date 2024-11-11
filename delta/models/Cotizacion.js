@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database.config.js')
 
 
-const Cotizacion = sequelize.define("Cotizacion", {
+const Cotizacion = sequelize.define("Cotizaciones", {
     idCotizacion: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,15 +12,15 @@ const Cotizacion = sequelize.define("Cotizacion", {
     idUsuario: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Usuario',
+            model: 'Usuarios',
             key: 'idUsuario'
         },
     },
     idBanco: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Banco',
-            key: 'id'
+            model: 'Bancos',
+            key: 'idBanco'
         }
     },
     annos: DataTypes.INTEGER,

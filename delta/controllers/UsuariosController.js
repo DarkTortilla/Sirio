@@ -15,7 +15,7 @@ exports.createUsuario = async (req, res) => {
       pass: hashedPassword
     });
 
-    res.status(201).json({ message: 'Usuario creado exitosamente', usuario });
+    res.status(201).json({ msg: 'Usuario creado exitosamente', usuario });
   } catch (error) {
     console.error('Error al crear el usuario:', error);
     res.status(500).json({ error: 'Error al crear el usuario' });
@@ -34,7 +34,17 @@ exports.getAllUsuarios = async (req, res) => {
 
 exports.getUsuarioById = async (req, res) => {
   try {
-    const usuario = await Usuario.findByPk(req.params.id);
+    let id;
+    console.log(req.user,"***")
+    if(req.user.role=="admin"){
+      console.log(req.params)
+      id=req.params.id;
+    }
+    else{
+      id=req.user.id;
+    }
+    console.log(id)
+    const usuario = await Usuario.findByPk(id);
     if (!usuario) return res.status(404).json({ error: 'Usuario no encontrado' });
     res.json(usuario);
   } catch (error) {
@@ -46,7 +56,7 @@ exports.updateUsuario = async (req, res) => {
   try {
     const updated = await Usuario.update(req.body, { where: { idUsuario: req.params.id } });
     if (updated[0] === 0) return res.status(404).json({ error: 'Usuario no encontrado' });
-    res.json({ message: 'Usuario actualizado' });
+    res.json({ msg: 'Usuario actualizado' });
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar el usuario' });
   }
@@ -54,9 +64,10 @@ exports.updateUsuario = async (req, res) => {
 
 exports.deleteUsuario = async (req, res) => {
   try {
-    const deleted = await Usuario.destroy({ where: { idUsuario: req.params.id } });
+    console.log(req.body)
+    const deleted = await Usuario.destroy({ where: { idUsuario: req.body.idUsuario } });
     if (!deleted) return res.status(404).json({ error: 'Usuario no encontrado' });
-    res.json({ message: 'Usuario eliminado' });
+    res.json({ msg: 'Usuario eliminado' });
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar el usuario' });
   }

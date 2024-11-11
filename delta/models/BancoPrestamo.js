@@ -2,18 +2,18 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database.config.js');
 
-const BancoPrestamo = sequelize.define('BancoPrestamo', {
+const BancoPrestamo = sequelize.define('BancoPrestamos', {
   idBanco: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Banco',
-      key: 'id'
+      model: 'Bancos',
+      key: 'idBanco'
     }
   },
   idPrestamo: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Prestamo',
+      model: 'Prestamos',
       key: 'idPrestamo'
     }
   }

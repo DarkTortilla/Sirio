@@ -11,12 +11,12 @@ router.post('/crear', UsuarioController.createUsuario);
 router.get('/getall',auth,role('admin'),UsuarioController.getAllUsuarios);
 
 // Ruta para obtener un usuario por ID
-router.get('/getbyid/:id', UsuarioController.getUsuarioById);
+router.get('/getbyid/:id',auth,  UsuarioController.getUsuarioById);
 
 // Ruta para actualizar un usuario por ID
-router.post('/update/:id', UsuarioController.updateUsuario);
+router.post('/update', UsuarioController.updateUsuario);
 
 // Ruta para eliminar un usuario por ID
-router.post('/delete/:id', UsuarioController.deleteUsuario);
+router.post('/delete',auth,role('admin'), UsuarioController.deleteUsuario);
 
 module.exports = router;
