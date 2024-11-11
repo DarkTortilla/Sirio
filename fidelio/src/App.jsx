@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home></Home>}/>
             <Route path="/admin/*" element={<Admin></Admin>}/>
-            <Route path="/nueva-co"></Route>
+            <Route path="/nueva-cotizacion"></Route>
           </Routes>
           </Router>
         </>
