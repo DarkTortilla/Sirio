@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login"
 import Admin from "./pages/admin/Admin";
+import NuevaCotizacion from "./pages/NuevaCotizacion/NuevaCotizacion"
 
 import {BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom';
 import getCookie from "../services/cookiesService";
@@ -39,7 +40,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home></Home>}/>
             <Route path="/admin/*" element={<Admin></Admin>}/>
-            <Route path="/nueva-cotizacion"></Route>
+            <Route path="/nueva-cotizacion" element={<NuevaCotizacion/>}></Route>
           </Routes>
           </Router>
         </>

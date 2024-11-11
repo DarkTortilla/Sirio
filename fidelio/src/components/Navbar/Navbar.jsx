@@ -55,7 +55,7 @@ export default function Navbar() {
         <li><Link to={"/admin"}>Admin</Link></li>
         
         </>) : (<>
-        <Link>Nueva Cotización</Link>
+        <li><Link to={"/nueva-cotizacion"}>Nueva Cotización</Link></li>
         </>)}
         <li>Perfil</li>
         <li onClick={handleCloseSession}>Cerrar Sesión</li>

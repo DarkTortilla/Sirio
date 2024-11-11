@@ -1,0 +1,49 @@
+.quote-section{
+    margin: auto;
+    width: fit-content;
+    padding: 20px;
+    background: linear-gradient(40deg, #f82, #f51);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 #0004;
+    color: #fff;
+}
+
+.quote-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & input[type=submit]{
+        width: fit-content;
+        padding: 8px 10px;
+        background: #222;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover{
+            background: #555;
+        }
+    }
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & input, select{
+        width: 400px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 8px;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    
+}

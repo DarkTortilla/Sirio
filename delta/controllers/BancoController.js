@@ -56,8 +56,7 @@ exports.getBancoById = async (req, res) => {
 
   exports.getPrestamosByBanco = async (req, res) => {
     const { id } = req.params; // El idBanco que quieres consultar"
-    console.log(id,"*******************************************")
-  
+    console.log(id)
     try {
       const banco = await Banco.findOne({
         where: { idBanco: id },
